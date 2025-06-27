@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FeedbackList from '../components/FeedbackList';
-import axios from 'axios';
+import api from '../api';
 
 export default function EmployeeDashboard() {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -8,11 +8,11 @@ export default function EmployeeDashboard() {
 
   const loadFeedbacks = async () => {
     const token = localStorage.getItem('token');
-    const userRes = await axios.get('/api/whoami', {
+    const userRes = await api.get('/api/whoami', {
       headers: { Authorization: `Bearer ${token}` }
     });
     setUser(userRes.data);
-    const res = await axios.get(`/api/feedback/employee/${userRes.data.id}`, {
+    const res = await api.get(`/api/feedback/employee/${userRes.data.id}`, {
       headers: { Authorization: `Bearer ${token}` }
     });
     setFeedbacks(res.data);
@@ -20,7 +20,7 @@ export default function EmployeeDashboard() {
 
   const handleAcknowledge = async (feedbackId) => {
     try {
-      await axios.post(`/api/feedback/${feedbackId}/acknowledge`, null, {
+      await api.post(`/api/feedback/${feedbackId}/acknowledge`, null, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       await loadFeedbacks();
@@ -34,6 +34,8 @@ export default function EmployeeDashboard() {
     loadFeedbacks();
   }, []);
 
+  const unacknowledgedCount = feedbacks.filter(fb => !fb.acknowledged).length;
+
   return (
     <div className="dashboard-container">
       <div className="dashboard-header">
@@ -44,7 +46,13 @@ export default function EmployeeDashboard() {
         }}>Logout</button>
       </div>
       <div className="right-panel">
-        {user && <h3>Feedback for {user.username}</h3>}
+        {user && (
+          <>
+            <p style={{ color: 'red', fontWeight: 'bold', marginLeft:20 }}>
+              Unacknowledged: {unacknowledgedCount}
+            </p>
+          </>
+        )}
         <FeedbackList
           feedbacks={feedbacks}
           onAcknowledge={handleAcknowledge}

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import axios from 'axios';
+import api from '../api';
 import { useNavigate } from 'react-router-dom';
 import { saveAuth } from '../auth';
 import { AuthContext } from '../context/AuthContext';
@@ -14,7 +14,7 @@ export default function Register() {
   const handleRegister = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('/api/auth/register', {
+    const res = await api.post('/api/auth/register', {
       username,
       password,
       role,

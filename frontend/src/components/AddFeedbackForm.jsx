@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 
 export default function AddFeedbackForm({ employeeId, feedbackToEdit, onSuccess }) {
@@ -35,7 +35,7 @@ export default function AddFeedbackForm({ employeeId, feedbackToEdit, onSuccess 
 
       const method = feedbackToEdit ? 'put' : 'post';
 
-      const res = await axios[method](url, {
+      const res = await api[method](url, {
         employee_id: employeeId,
         strengths,
         areas_to_improve: areasToImprove,

@@ -7,7 +7,7 @@ export default function FeedbackItem({ feedback, onAcknowledge, onEdit, showAckn
       <small>
         From: {feedback.manager_name || 'You'} | {new Date(feedback.created_at).toLocaleString()}
       </small><br />
-      {feedback.updated_at !== feedback.created_at && feedback.manager_id && (
+      {(feedback.updated_at !== feedback.created_at && feedback.manager_name) && (
         <small>[Updated: {new Date(feedback.updated_at).toLocaleString()}]</small>
       )}<br />
 

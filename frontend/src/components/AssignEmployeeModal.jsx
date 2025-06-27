@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import api from '../api';
 
 export default function AssignEmployeeModal({ onClose }) {
   const [unassigned, setUnassigned] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const loadUnassigned = async () => {
-    const res = await axios.get('/api/team/unassigned', {
+    const res = await api.get('/api/team/unassigned', {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
     setUnassigned(res.data);
@@ -19,7 +19,7 @@ export default function AssignEmployeeModal({ onClose }) {
   const assign = async (employeeId) => {
     setLoading(true);
     try {
-      await axios.post('/api/team/assign', {
+      await api.post('/api/team/assign', {
         employee_id: employeeId
       }, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }

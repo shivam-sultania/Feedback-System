@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://feedback-system-zzd4.onrender.com',
+  baseURL: 'https://feedback-system-g14d.onrender.com',
   headers: {
     Authorization: `Bearer ${localStorage.getItem('token')}`,
   },

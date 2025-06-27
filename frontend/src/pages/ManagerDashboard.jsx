@@ -3,7 +3,7 @@ import TeamList from '../components/TeamList';
 import FeedbackList from '../components/FeedbackList';
 import AddFeedbackForm from '../components/AddFeedbackForm';
 import AssignEmployeeModal from '../components/AssignEmployeeModal';
-import axios from 'axios';
+import api from '../api';
 
 export default function ManagerDashboard() {
   const [employees, setEmployees] = useState([]);
@@ -14,14 +14,14 @@ export default function ManagerDashboard() {
   const [editFeedback, setEditFeedback] = useState(null);
 
   const loadEmployees = async () => {
-    const res = await axios.get('/api/team/members', {
+    const res = await api.get('/api/team/members', {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
     setEmployees(res.data);
   };
 
   const loadFeedbacks = async (employeeId) => {
-    const res = await axios.get(`/api/feedback/employee/${employeeId}`, {
+    const res = await api.get(`/api/feedback/employee/${employeeId}`, {
       headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
     });
     setFeedbacks(res.data);
