@@ -1,0 +1,12 @@
+# Python
+**/__pycache__/
+*.pyc
+backend/venv/
+
+# Node.js
+frontend/node_modules/
+
+# OS / Editor files
+.DS_Store
+*.log
+backend/.env
