@@ -13,7 +13,7 @@ class UserOut(BaseModel):
     role: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class Token(BaseModel):
     access_token: str
@@ -39,7 +39,7 @@ class FeedbackOut(BaseModel):
     manager_name: Optional[str] = None
 
     class Config:
-        orm_mode = True
+        from_attributes = True
         
 class TeamAssignment(BaseModel):
     employee_id: int
@@ -49,4 +49,4 @@ class TeamMemberOut(BaseModel):
     username: str
 
     class Config:
-        orm_mode = True
+        from_attributes = True

@@ -7,7 +7,7 @@ import os
 
 load_dotenv()
 SECRET_KEY = str(os.getenv("SECRET_KEY"))
-ALGORITHM = str(os.getenv("ALGORITHM"))
+ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 if not SECRET_KEY or not ALGORITHM:
