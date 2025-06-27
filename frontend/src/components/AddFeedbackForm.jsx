@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+
 export default function AddFeedbackForm({ employeeId, feedbackToEdit, onSuccess }) {
   const isEditing = !!feedbackToEdit;
 
@@ -23,7 +24,7 @@ export default function AddFeedbackForm({ employeeId, feedbackToEdit, onSuccess 
 
     if (!token) {
       alert("You are not logged in or token is missing");
-      console.error("🔴 Token missing from localStorage");
+      console.error("Token missing from localStorage");
       return;
     }
 
@@ -45,13 +46,13 @@ export default function AddFeedbackForm({ employeeId, feedbackToEdit, onSuccess 
         }
       });
 
-      console.log("✅ Feedback submitted:", res.data);
+      console.log("Feedback submitted:", res.data);
       onSuccess();
       setStrengths('');
       setAreasToImprove('');
       setSentiment('positive');
     } catch (err) {
-      console.error("❌ Feedback submission failed:", err);
+      console.error("Feedback submission failed:", err);
       alert("Failed to submit feedback. Login again if needed.");
     }
   };
