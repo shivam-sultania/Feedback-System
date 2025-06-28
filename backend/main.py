@@ -4,7 +4,10 @@ from routers import login_reg, feedback, team
 from models import User
 from routers.feedback import get_current_user
 from fastapi.middleware.cors import CORSMiddleware
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 Base.metadata.create_all(bind=engine)
 
@@ -15,7 +18,7 @@ app.include_router(team.router)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  
+    allow_origins=[str(os.getenv("Authorized_URL"))],  
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
