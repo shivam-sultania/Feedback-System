@@ -53,16 +53,37 @@ A full-stack internal feedback application that allows **managers** to assign em
 
 ## 1. Clone the Repository
 
-git clone https://github.com/your-username/feedback-system.git
-cd feedback-system
+```
+https://github.com/shivam-sultania/Feedback-System.git
+cd Feedback-system
+code .
+```
 
-## 2. Backend Setup
+
+## 2. Enviroment Variables
+
+### Create 📁 .env (Backend)
+
+Copy code
+```
+SECRET_KEY = "DPDzero" # Add any secret key 
+Authorized_URL = "http://localhost:5173"
+```
+
+### Create 📁 .env (Frontend)
+
+Copy code
+```
+VITE_API_URL= "http://127.0.0.1:8000"
+```
+
+## 3. Backend Setup
 
 ### Create virtual environment
 `python -m venv venv`
 
 ### Activate (Linux/Mac)
-`source venv/bin/activate`
+`source venv/bin/activate` 
 
 ### Activate (Windows)
 `venv\Scripts\activate`
@@ -71,35 +92,23 @@ cd feedback-system
 `pip install -r requirements.txt`
 
 ### Run FastAPI server
-`uvicorn main:app --reload`
+`python -m uvicorn main:app --reload`
 
 Backend will run on: http://127.0.0.1:8000
 
 - **Also hosted on Render** - https://feedback-system-g14d.onrender.com
 
-### 3. Frontend Setup
+### 4. Frontend Setup
 
-<pre> ```bash // 
+```
 cd frontend
 npm install
-npm run dev ``` </pre>
+npm run dev
+```
 
 Frontend will run on: http://localhost:5173
 
-- **Also hosted on Render (Logout button does not work in hosting)** - https://feedback-system-app.onrender.com
-
-## 4. Enviroment Variables
-
-# Create 📁 .env (Backend)
-
-Copy code
-`SECRET_KEY=your_secret_key`
-
----
-If you want to run frontenc & backend both locally then change the baseURL in backend/src/api.js to the local running url of backend
----
-
-
+- **Also hosted on Render** - https://feedback-system-app.onrender.com
 
 ### Design Decisions :- 
 
