@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FeedbackList from '../components/FeedbackList';
+import LogoutButton from '../components/LogoutButton';
 import api from '../api';
 
 export default function EmployeeDashboard() {
@@ -40,10 +41,7 @@ export default function EmployeeDashboard() {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <h2>Employee Dashboard</h2>
-        <button className='logout-btn' onClick={() => {
-          localStorage.clear();
-          window.location.href = '/login';
-        }}>Logout</button>
+        <LogoutButton />
       </div>
       <div className="right-panel">
         {user && (

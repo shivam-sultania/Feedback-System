@@ -3,6 +3,7 @@ import TeamList from '../components/TeamList';
 import FeedbackList from '../components/FeedbackList';
 import AddFeedbackForm from '../components/AddFeedbackForm';
 import AssignEmployeeModal from '../components/AssignEmployeeModal';
+import LogoutButton from '../components/LogoutButton';
 import api from '../api';
 
 export default function ManagerDashboard() {
@@ -39,10 +40,7 @@ export default function ManagerDashboard() {
     <div className="dashboard-container">
       <div className="dashboard-header">
         <h2>Manager Dashboard</h2>
-        <button className="logout-btn" onClick={() => {
-          localStorage.clear();
-          window.location.href = '/login';
-        }}>Logout</button>
+        <LogoutButton />
       </div>
 
       <div className="main-panel">
